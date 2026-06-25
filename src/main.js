@@ -31,14 +31,16 @@ const newPointButton = new ViewNewPointButton({
 
 tripMainContainer.append(newPointButton.element);
 
+tripPresenter.init();
+
 (async () => {
   try {
     await tripModel.init();
   } catch (error) {
-    //пусто
+    // пустое состояние
   } finally {
     tripPresenter.setLoadingFinished();
-    tripPresenter.init();
+    tripPresenter.rerender();
     filterPresenter.init();
   }
 })();
